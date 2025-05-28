@@ -9,7 +9,10 @@ const apiRequest = async (
   data: any = null
 ): Promise<any> => {
   try {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+    const API_URL =
+      import.meta.env.VITE_API_URL ||
+      'http://localhost:3000/api' ||
+      'https://sats-jar-backend-2.onrender.com';
     const url = `${API_URL}${endpoint}`;
 
     console.log(`Making ${method} request to: ${url}`);
