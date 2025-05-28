@@ -11,7 +11,8 @@ const apiRequest = async (
   try {
     const API_URL =
       import.meta.env.VITE_API_URL ||
-      'http://localhost:3000/api' ||
+      // 'http://localhost:3000/api'
+      'http://localhost:3000' ||
       'https://sats-jar-backend-2.onrender.com';
     const url = `${API_URL}${endpoint}`;
 
