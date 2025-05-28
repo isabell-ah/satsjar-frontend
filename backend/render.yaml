@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sats-jar-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    # Auto-deploy from main branch
+    autoDeploy: true
+    # Environment variables will be set manually in Render dashboard
+    # See PRODUCTION_ENV_VARS.md for the complete list
