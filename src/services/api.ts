@@ -1,7 +1,5 @@
 import { toast } from '@/hooks/use-toast';
 
-// Removed problematic caching that was breaking authentication
-
 // Simple apiRequest function without problematic caching
 const apiRequest = async (
   endpoint: string,
@@ -11,12 +9,12 @@ const apiRequest = async (
   try {
     // Define base API URL with environment variable fallbacks
     let API_URL = import.meta.env.VITE_API_URL;
-
+    
     // If not set, use appropriate fallback based on environment
     if (!API_URL) {
       // Check if we're in production (deployed) environment
       const isProduction = window.location.hostname !== 'localhost';
-
+      
       if (isProduction) {
         // In production, use the deployed backend URL without /api
         API_URL = 'https://sats-jar-backend-2.onrender.com';
@@ -25,7 +23,7 @@ const apiRequest = async (
         API_URL = 'http://localhost:3000/api';
       }
     }
-
+    
     const url = `${API_URL}${endpoint}`;
 
     console.log(`Making ${method} request to: ${url}`);
@@ -43,7 +41,8 @@ const apiRequest = async (
     const options: RequestInit = {
       method,
       headers,
-      credentials: 'include',
+      // Remove credentials: 'include' which can cause CORS issues
+      mode: 'cors', // Explicitly request CORS
     };
 
     // Only add body for non-GET requests and when data is provided
