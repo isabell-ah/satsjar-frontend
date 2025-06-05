@@ -19,7 +19,7 @@ const apiRequest = async (
 
       if (isProduction) {
         // In production, use the deployed backend URL without /api
-        API_URL = 'https://sats-jar-backend-2.onrender.com';
+        API_URL = 'https://sats-jar-backend-2.onrender.com/api';
       } else {
         // In development, use localhost with /api
         API_URL = 'http://localhost:3000/api';
